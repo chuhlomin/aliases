@@ -19,18 +19,19 @@
 
 PROJECTS_DIR=~/Projects
 
-IFS=':/.' read -ra ADDR <<< "$1"
+IFS=':/' read -ra ADDR <<< "$1"
 
-if [ ${#ADDR[@]} == 5 ] # for URLs like git@github.com:chuhlomin/homepage.git
+if [ ${#ADDR[@]} == 3 ] # for URLs like git@github.com:chuhlomin/homepage.git
 then
-    OWNER=${ADDR[2]}
-    REPO=${ADDR[3]}
-elif [ ${#ADDR[@]} == 8 ] # for URLs like # https://github.com/chuhlomin/homepage.git
+    OWNER=${ADDR[1]}
+    REPO=${ADDR[2]%".git"}
+elif [ ${#ADDR[@]} == 6 ] # for URLs like # https://github.com/chuhlomin/homepage.git
 then
-    OWNER=${ADDR[5]}
-    REPO=${ADDR[6]}
+    OWNER=${ADDR[4]}
+    REPO=${ADDR[5]%".git"}
 else
     echo "Unrecognized repository URL"
+    exit 1
 fi
 
 mkdir -p $PROJECTS_DIR/$OWNER
