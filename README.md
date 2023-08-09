@@ -1,12 +1,18 @@
-# e - export for .env files
+# aliases
+
+This repository contains a collection of useful shell aliases:
+
+* [e](#e) – exporting environment variables from `.env` files
+* [clone](#clone) – clone Git repository into `~/Projects/<owner>/<repo>` directory
+* [new](#new) – create new Go project with `gonew` tool
+
+## e
 
 `e` is a small shell alias for exporting environment variables from `.env` files.
 
-<img width="762" alt="e demo" src="https://user-images.githubusercontent.com/3620471/136700630-a9b27950-e5bb-43c6-957c-b62118f7d928.png">
-
 You can find more alternative solutions here: https://gist.github.com/mihow/9c7f559807069a03e302605691f8557
 
-## Usage example
+Usage example:
 
 ```bash
 $ cat .env
@@ -20,18 +26,13 @@ $ echo $KEY
 VALUE
 ```
 
-Accepts one optional argument – filename: 
+Accepts one optional argument – filename:
 
 ```bash
 e .env.prod
 ````
 
-## Installation
-
-```bash
-git clone git@github.com:chuhlomin/e.git
-cd e
-```
+Installation:
 
 Bash:
 
@@ -47,16 +48,51 @@ source e.fish
 # to persist copy e.fish to ~/.config/fish/functions/
 ```
 
-## Uninstall
+## clone
 
-Bash:
+clone is a wrapper on top of the `git clone` command, it:
+
+1. parses the URL
+2. creates "owner" directory in `~/Projects/`
+3. clones repository into `~/Projects/<owner>/<repo>`
+
+Works with both SSH and HTTPS URLs.
+
+Usage example:
 
 ```bash
-unset -f e
+$ cd ~/ # run from anywhere
+$ clone git@github.com:chuhlomin/terraform.git
+
+Cloning into '/Users/username/Projects/chuhlomin/terraform'...
 ```
 
-Fish:
+Installation:
 
 ```bash
-functions -e e
+chmod +x clone.sh
+mv clone.sh /usr/local/bin/clone
+```
+
+## new
+
+`new <template> <new go module>` is an alias for [`gonew`](https://github.com/chuhlomin/gonew):
+
+```bash
+gonew github.com/chuhlomin/gonew/<template> github.com/<current_directory>/<new go module>
+```
+
+Usage example:
+
+```bash
+$ cd ~/Projects/username
+$ new server project
+gonew: initialized github.com/username/project in ./project
+```
+
+Installation:
+
+```bash
+chmod +x new.sh
+mv new.sh /usr/local/bin/new
 ```
