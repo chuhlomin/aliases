@@ -1,17 +1,17 @@
 #!/bin/bash
 #
-# gclone is a wrapper on top of the `git clone` command, it:
+# clone is a wrapper on top of the `git clone` command, it:
 # 1. parses the URL
 # 2. creates "owner" directory in ~/Projects/
 # 3. clones repository into ~/Projects/<owner>/<repo>
 #
 # Usage:
-# gclone git@github.com:chuhlomin/terraform.git
-# gclone https://github.com/chuhlomin/terraform.git
+# clone git@github.com:chuhlomin/terraform.git
+# clone https://github.com/chuhlomin/terraform.git
 #
 # Install:
-# chmod +x gclone.sh
-# mv gclone.sh /usr/local/bin/gclone
+# chmod +x clone.sh
+# mv clone.sh /usr/local/bin/clone
 #
 # License: GPL v3.0 https://opensource.org/licenses/GPL-3.0
 # Author: Konstantin Chukhlomin
