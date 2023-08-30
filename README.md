@@ -5,6 +5,7 @@ This repository contains a collection of useful shell aliases:
 * [e](#e) – exporting environment variables from `.env` files
 * [clone](#clone) – clone Git repository into `~/Projects/<owner>/<repo>` directory
 * [new](#new) – create new Go project with `gonew` tool
+* [pull](#pull) – Git pull with stash & rebase
 
 ## e
 
@@ -96,3 +97,7 @@ Installation:
 chmod +x new.sh
 mv new.sh /usr/local/bin/new
 ```
+
+## pull
+
+`pull` is a wrapper on to `git pull` with stash & rebase.
